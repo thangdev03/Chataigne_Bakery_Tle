@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/font/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Montserrat">
+</head>
+<body>
+    <!-- HEADER -->
+    <div id="header">
+        <div id="logo">
+            <img src="./assets/img/bakery-logo.png" alt="Bakery Logo" class="logo__img">
+            <h1 class="logo__title">Châtaigne</h1>
+        </div>
+        <ul id="menu">
+            <li><a href="#introduce">Trang chủ</a></li>
+            <li><a href="#product">Sản phẩm</a></li>
+            <li><a href="#footer">Liên hệ</a></li>
+        </ul>
+        <div class="header__shopping-cart-btn">
+            <i class="header__shopping-cart-icon ti-shopping-cart"></i>
+        </div>
+    </div>
+
+    <!-- POSTER -->
+    <div id="poster">
+        <div>
+            <p class="poster__title">Châtaigne</p>
+            <p class="poster__desc">French Bakery</p>
+            <p class="poster__desc">Since 2023</p>
+        </div>
+        <i class="arrow_down ti-arrow-circle-down"></i>
+    </div>
+
+    <!-- INTRODUCE ABOUT COMPANY -->
+    <div id="introduce" class="mt-64">
+        <p class="introduce__text">Dành nhiều tình cảm đặc biệt cho bánh mỳ Pháp, chúng tôi quyết tâm tạo nên thương hiệu 
+        Châtaigne để mang tới cho mọi người một trải nghiệm thưởng thức bánh thật tinh tế và tận tâm.<br> 
+        Hãy một lần nếm thử bánh của Châtaigne để cảm nhận những tình cảm và nỗ lực của chúng tôi, tất cả nằm ở sự hòa quyện của hương vị và kết cấu đặc biệt trong từng chiếc bánh.
+        </p>
+        <img src="./assets/img/png.monster-608.png" alt="Giỏ bánh">
+    </div>
+    
+    <!-- ADVERTISEMENT -->
+    <div id="advertisement" class="mt-32">
+        <div class="advertisement__background">
+            <div>
+                <div class="box-container">
+                    <div class="box">
+                        <h1>WORKSHOP</h1>
+                        <p>Trải nghiệm tự tay làm bánh</p> 
+                        <p>19h mỗi tối thứ 7</p> 
+                        <div class="highlight">ĐĂNG KÝ NGAY</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCTS SECTION -->
+    <div id="product" class="mt-64">
+        <h1>Best Seller</h1>
+        <div class="product-list mt-32"></div>
+    </div>
+    <!-- FOOTER -->
+    <div id="footer">
+        <h1>Thông tin liên hệ</h1>
+        <p>Họ và tên: Đoàn Lê Thu Phương</p>
+        <p>Lớp: Công nghệ thông tin 63A</p>
+        <p>Mã sinh viên: 11214747</p>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Hide MENU when scroll
+        var prevScrollPosition = window.pageYOffset;
+
+        window.onscroll = function () {
+          var currentScrollPosition = window.pageYOffset;
+          if (currentScrollPosition == 0) {
+            document.getElementById("header").style.top = "0";
+          } else if (prevScrollPosition > currentScrollPosition) {
+            document.getElementById("header").style.top = "0";
+          } else {
+            document.getElementById("header").style.top = "-60px";
+          }
+          prevScrollPosition = currentScrollPosition;
+        };
+    </script>
+
+    <script>
+        // Show items
+        const productList = document.querySelector('.product-list');
+        const products = [
+            {
+                img: './assets/img/bread.png',
+                price: '80.000đ',
+                desc: '300g',
+                name: 'Baguette'
+            },
+            {
+                img: './assets/img/bagel.png',
+                price: '50.000đ',
+                desc: '100g',
+                name: 'Bagel'
+            },
+            {
+                img: './assets/img/oatbread.png',
+                price: '90.000đ',
+                desc: '220g',
+                name: 'Puff Pastry'
+            },
+            {
+                img: './assets/img/sungbo.png',
+                price: '110.000đ',
+                desc: '180g',
+                name: 'Croissant'
+            },
+        ];
+
+        for (const product of products) {
+            const productContainer = document.createElement('div');
+            productContainer.classList.add('product-container');
+            productContainer.innerHTML = `
+                <img class="product-image" src="${product.img}" alt="">
+                <div class="product-textbox">
+                    <p class="product-textbox__price">${product.price}</p>
+                    <p class="product-textbox__desc">${product.desc}</p>
+                    <p class="product-textbox__name">${product.name}</p>
+                </div>
+                <button class="product-buyBtn"><i class="ti-plus"></i></button>
+            `
+            productList.appendChild(productContainer);
+        }
+    </script>
+</body>
+</html>
